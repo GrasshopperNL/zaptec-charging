@@ -1,0 +1,13 @@
+{
+  "domain": "zaptec_charging",
+  "name": "Zaptec Charging",
+  "codeowners": ["@GrasshopperNL"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/GrasshopperNL/ha-zaptec-charging",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/GrasshopperNL/ha-zaptec-charging/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

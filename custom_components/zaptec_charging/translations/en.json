@@ -1,0 +1,164 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Zaptec Charging",
+        "description": "Select the entities of your Zaptec charger and smart meter. Charging settings can be changed afterwards via Configure.",
+        "data": {
+          "name": "Name",
+          "charger_mode_entity": "Charger mode sensor",
+          "charge_power_entity": "Charge power sensor",
+          "available_current_entity": "Available current",
+          "phase_switch_entity": "3 to 1 phase switch current",
+          "grid_export_entity": "Smart meter power export",
+          "grid_import_entity": "Smart meter power import",
+          "notify_service": "Notify service"
+        },
+        "data_description": {
+          "charger_mode_entity": "Zaptec sensor with states like disconnected and connected_charging.",
+          "charge_power_entity": "Current charge power of the charger in W.",
+          "available_current_entity": "Zaptec installation number entity for the available current.",
+          "phase_switch_entity": "Zaptec installation number entity (0 = always 3-phase, 32 = always 1-phase).",
+          "grid_export_entity": "Current power returned to the grid in W, for example from a P1 meter.",
+          "grid_import_entity": "Current power taken from the grid in W, for example from a P1 meter.",
+          "notify_service": "Mobile app notify service for the charging choice. Leave empty to disable notifications."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This charger is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Zaptec Charging settings",
+        "data": {
+          "charger_mode_entity": "Charger mode sensor",
+          "charge_power_entity": "Charge power sensor",
+          "available_current_entity": "Available current",
+          "phase_switch_entity": "3 to 1 phase switch current",
+          "grid_export_entity": "Smart meter power export",
+          "grid_import_entity": "Smart meter power import",
+          "notify_service": "Notify service",
+          "voltage": "Grid voltage",
+          "min_current": "Minimum charge current",
+          "max_current": "Maximum charge current",
+          "stop_minutes": "Stop after too little sun for",
+          "resume_minutes": "Resume after enough sun for",
+          "night_forced_time": "Nightly forced charging at",
+          "night_tariff_time": "Night tariff starts at",
+          "phase_value_1p": "Phase switch value for 1-phase",
+          "phase_value_3p": "Phase switch value for 3-phase",
+          "phase_wait_seconds": "Wait after phase switch",
+          "control_interval_seconds": "Control interval",
+          "offer_stop_option": "Offer 'Solar, otherwise stop' in the notification"
+        },
+        "data_description": {
+          "charger_mode_entity": "Zaptec sensor with states like disconnected and connected_charging.",
+          "charge_power_entity": "Current charge power of the charger in W.",
+          "available_current_entity": "Zaptec installation number entity for the available current.",
+          "phase_switch_entity": "Zaptec installation number entity (0 = always 3-phase, 32 = always 1-phase).",
+          "grid_export_entity": "Current power returned to the grid in W, for example from a P1 meter.",
+          "grid_import_entity": "Current power taken from the grid in W, for example from a P1 meter.",
+          "notify_service": "Mobile app notify service for the charging choice. Leave empty to disable notifications.",
+          "voltage": "Used to convert surplus power into charge current.",
+          "min_current": "Solar charging never goes below this current.",
+          "max_current": "Used for forced charging and as upper limit for solar charging.",
+          "stop_minutes": "Only when 'stop without sun' is selected.",
+          "resume_minutes": "Resumes paused solar charging.",
+          "night_forced_time": "Switches to forced 3-phase charging, unless paused or 'stop without sun' is selected.",
+          "night_tariff_time": "Start of forced charging when 'wait for night tariff' is chosen.",
+          "phase_value_1p": "Value of the phase switch entity for 1-phase charging.",
+          "phase_value_3p": "Value of the phase switch entity for 3-phase charging.",
+          "phase_wait_seconds": "Time the charger needs after switching phases.",
+          "control_interval_seconds": "How often the charge current is recalculated.",
+          "offer_stop_option": "Adds a fourth choice to the notification."
+        }
+      }
+    },
+    "error": {
+      "max_below_min": "The maximum current must be at least the minimum current.",
+      "phase_values_equal": "The phase values for 1-phase and 3-phase must differ."
+    }
+  },
+  "entity": {
+    "select": {
+      "charging_mode": {
+        "name": "Charging mode",
+        "state": {
+          "solar": "Solar",
+          "night_tariff": "Wait for night tariff",
+          "forced": "Forced 3-phase"
+        }
+      },
+      "solar_mode": {
+        "name": "Without sun",
+        "state": {
+          "continue_min_current": "Continue at minimum current",
+          "stop_without_sun": "Stop"
+        }
+      }
+    },
+    "binary_sensor": {
+      "solar_paused": {
+        "name": "Solar charging paused"
+      }
+    },
+    "sensor": {
+      "surplus": {
+        "name": "Solar surplus"
+      },
+      "surplus_average": {
+        "name": "Solar surplus average"
+      },
+      "charge_power_grid": {
+        "name": "Charge power from grid"
+      },
+      "charge_power_solar": {
+        "name": "Charge power from solar"
+      },
+      "energy_grid": {
+        "name": "Charged energy from grid"
+      },
+      "energy_solar": {
+        "name": "Charged energy from solar"
+      },
+      "energy_solar_daily": {
+        "name": "Solar today"
+      },
+      "energy_grid_daily": {
+        "name": "Grid today"
+      },
+      "energy_solar_monthly": {
+        "name": "Solar this month"
+      },
+      "energy_grid_monthly": {
+        "name": "Grid this month"
+      },
+      "energy_solar_yearly": {
+        "name": "Solar this year"
+      },
+      "energy_grid_yearly": {
+        "name": "Grid this year"
+      },
+      "status": {
+        "name": "Status",
+        "state": {
+          "disconnected": "Disconnected",
+          "solar": "Solar charging",
+          "solar_paused": "Solar charging paused",
+          "waiting_night_tariff": "Waiting for night tariff",
+          "forced": "Forced 3-phase"
+        }
+      },
+      "phase": {
+        "name": "Phases",
+        "state": {
+          "single_phase": "1-phase",
+          "three_phase": "3-phase"
+        }
+      }
+    }
+  }
+}

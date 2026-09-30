@@ -1,0 +1,164 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Zaptec Charging",
+        "description": "Kies de entiteiten van je Zaptec lader en slimme meter. De laadinstellingen kun je daarna aanpassen via Configureren.",
+        "data": {
+          "name": "Naam",
+          "charger_mode_entity": "Sensor laadstatus",
+          "charge_power_entity": "Sensor laadvermogen",
+          "available_current_entity": "Beschikbare stroom",
+          "phase_switch_entity": "3 naar 1 fase schakelstroom",
+          "grid_export_entity": "Slimme meter teruglevering",
+          "grid_import_entity": "Slimme meter verbruik",
+          "notify_service": "Notificatie service"
+        },
+        "data_description": {
+          "charger_mode_entity": "Zaptec sensor met statussen zoals disconnected en connected_charging.",
+          "charge_power_entity": "Actueel laadvermogen van de lader in W.",
+          "available_current_entity": "Number entiteit van de Zaptec installatie voor de beschikbare stroom.",
+          "phase_switch_entity": "Number entiteit van de Zaptec installatie (0 = altijd 3-fase, 32 = altijd 1-fase).",
+          "grid_export_entity": "Actuele teruglevering aan het net in W, bijvoorbeeld van een P1 meter.",
+          "grid_import_entity": "Actueel verbruik uit het net in W, bijvoorbeeld van een P1 meter.",
+          "notify_service": "Notificatie service van de mobiele app voor de laadkeuze. Leeg laten om meldingen uit te zetten."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Deze lader is al ingesteld."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Instellingen Zaptec Charging",
+        "data": {
+          "charger_mode_entity": "Sensor laadstatus",
+          "charge_power_entity": "Sensor laadvermogen",
+          "available_current_entity": "Beschikbare stroom",
+          "phase_switch_entity": "3 naar 1 fase schakelstroom",
+          "grid_export_entity": "Slimme meter teruglevering",
+          "grid_import_entity": "Slimme meter verbruik",
+          "notify_service": "Notificatie service",
+          "voltage": "Netspanning",
+          "min_current": "Minimale laadstroom",
+          "max_current": "Maximale laadstroom",
+          "stop_minutes": "Stoppen na te weinig zon gedurende",
+          "resume_minutes": "Hervatten na genoeg zon gedurende",
+          "night_forced_time": "Nachtelijk geforceerd laden om",
+          "night_tariff_time": "Nachtstroom start om",
+          "phase_value_1p": "Waarde faseschakelaar voor 1-fase",
+          "phase_value_3p": "Waarde faseschakelaar voor 3-fase",
+          "phase_wait_seconds": "Wachttijd na faseschakeling",
+          "control_interval_seconds": "Regelinterval",
+          "offer_stop_option": "Keuze 'Zon, anders stop' in de melding tonen"
+        },
+        "data_description": {
+          "charger_mode_entity": "Zaptec sensor met statussen zoals disconnected en connected_charging.",
+          "charge_power_entity": "Actueel laadvermogen van de lader in W.",
+          "available_current_entity": "Number entiteit van de Zaptec installatie voor de beschikbare stroom.",
+          "phase_switch_entity": "Number entiteit van de Zaptec installatie (0 = altijd 3-fase, 32 = altijd 1-fase).",
+          "grid_export_entity": "Actuele teruglevering aan het net in W, bijvoorbeeld van een P1 meter.",
+          "grid_import_entity": "Actueel verbruik uit het net in W, bijvoorbeeld van een P1 meter.",
+          "notify_service": "Notificatie service van de mobiele app voor de laadkeuze. Leeg laten om meldingen uit te zetten.",
+          "voltage": "Wordt gebruikt om overschot om te rekenen naar laadstroom.",
+          "min_current": "Zonneladen gaat nooit onder deze stroom.",
+          "max_current": "Voor geforceerd laden en als bovengrens bij zonneladen.",
+          "stop_minutes": "Alleen als 'stoppen zonder zon' gekozen is.",
+          "resume_minutes": "Hervat gepauzeerd zonneladen.",
+          "night_forced_time": "Schakelt naar geforceerd 3-fase laden, behalve bij een pauze of bij 'stoppen zonder zon'.",
+          "night_tariff_time": "Start van geforceerd laden als 'wachten op nachtstroom' gekozen is.",
+          "phase_value_1p": "Waarde van de faseschakelaar voor 1-fase laden.",
+          "phase_value_3p": "Waarde van de faseschakelaar voor 3-fase laden.",
+          "phase_wait_seconds": "Tijd die de lader nodig heeft na het schakelen van fasen.",
+          "control_interval_seconds": "Hoe vaak de laadstroom opnieuw wordt berekend.",
+          "offer_stop_option": "Voegt een vierde keuze toe aan de melding."
+        }
+      }
+    },
+    "error": {
+      "max_below_min": "De maximale stroom moet minstens gelijk zijn aan de minimale stroom.",
+      "phase_values_equal": "De fasewaarden voor 1-fase en 3-fase moeten verschillen."
+    }
+  },
+  "entity": {
+    "select": {
+      "charging_mode": {
+        "name": "Laadmodus",
+        "state": {
+          "solar": "Zonneladen",
+          "night_tariff": "Wachten op nachtstroom",
+          "forced": "Geforceerd 3-fase"
+        }
+      },
+      "solar_mode": {
+        "name": "Zonder zon",
+        "state": {
+          "continue_min_current": "Doorladen op minimale stroom",
+          "stop_without_sun": "Stoppen"
+        }
+      }
+    },
+    "binary_sensor": {
+      "solar_paused": {
+        "name": "Zonneladen gepauzeerd"
+      }
+    },
+    "sensor": {
+      "surplus": {
+        "name": "Zonneoverschot"
+      },
+      "surplus_average": {
+        "name": "Zonneoverschot gemiddeld"
+      },
+      "charge_power_grid": {
+        "name": "Laadvermogen uit net"
+      },
+      "charge_power_solar": {
+        "name": "Laadvermogen uit zon"
+      },
+      "energy_grid": {
+        "name": "Geladen energie uit net"
+      },
+      "energy_solar": {
+        "name": "Geladen energie uit zon"
+      },
+      "energy_solar_daily": {
+        "name": "Zon vandaag"
+      },
+      "energy_grid_daily": {
+        "name": "Net vandaag"
+      },
+      "energy_solar_monthly": {
+        "name": "Zon deze maand"
+      },
+      "energy_grid_monthly": {
+        "name": "Net deze maand"
+      },
+      "energy_solar_yearly": {
+        "name": "Zon dit jaar"
+      },
+      "energy_grid_yearly": {
+        "name": "Net dit jaar"
+      },
+      "status": {
+        "name": "Status",
+        "state": {
+          "disconnected": "Niet aangesloten",
+          "solar": "Zonneladen",
+          "solar_paused": "Zonneladen gepauzeerd",
+          "waiting_night_tariff": "Wachten op nachtstroom",
+          "forced": "Geforceerd 3-fase"
+        }
+      },
+      "phase": {
+        "name": "Fasen",
+        "state": {
+          "single_phase": "1-fase",
+          "three_phase": "3-fase"
+        }
+      }
+    }
+  }
+}
