@@ -1,7 +1,7 @@
 # Zaptec Charging
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
-[![Validate](https://github.com/GrasshopperNL/ha-zaptec-charging/actions/workflows/validate.yml/badge.svg)](https://github.com/GrasshopperNL/ha-zaptec-charging/actions/workflows/validate.yml)
+[![Validate](https://github.com/GrasshopperNL/zaptec-charging/actions/workflows/validate.yml/badge.svg)](https://github.com/GrasshopperNL/zaptec-charging/actions/workflows/validate.yml)
 
 Solar surplus charging for Zaptec chargers in Home Assistant, with night tariff
 and forced charging, an actionable notification when the car is connected, and
@@ -48,7 +48,7 @@ Home Assistant 2024.11 or newer.
 ## Installation
 
 1. In HACS, open the menu (three dots) and choose **Custom repositories**.
-2. Add `https://github.com/GrasshopperNL/ha-zaptec-charging` with type **Integration**.
+2. Add `https://github.com/GrasshopperNL/zaptec-charging` with type **Integration**.
 3. Install **Zaptec Charging** and restart Home Assistant.
 4. Go to **Settings > Devices & services > Add integration** and search for
    **Zaptec Charging**.
